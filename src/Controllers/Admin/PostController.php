@@ -42,7 +42,8 @@ class PostController extends BaseController
 
     public function store()
     {
-        //@todo: sanitize form fields before passing it to DB
+        //@todo: sanitize and validate form fields before passing it to DB
+        // This can be improved a lot, I'm doing just basic sanitization
         $hasErrors = false;
         if(!$author_id = filter_var($_POST['author_id'], FILTER_SANITIZE_NUMBER_INT)) {
             $_SESSION['errors'] = ['Please choose an author.'];
