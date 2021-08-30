@@ -43,10 +43,32 @@ class PostController extends BaseController
     public function store()
     {
         //@todo: sanitize form fields before passing it to DB
-        $author_id = filter_var($_POST['author_id'], FILTER_SANITIZE_NUMBER_INT);
-        $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
-        $excerpt = filter_var($_POST['excerpt'], FILTER_SANITIZE_STRING);
-        $content = filter_var($_POST['content'], FILTER_SANITIZE_STRING);
+        $hasErrors = false;
+        if(!$author_id = filter_var($_POST['author_id'], FILTER_SANITIZE_NUMBER_INT)) {
+            $_SESSION['errors'] = ['Please choose an author.'];
+            $hasErrors = true;
+        }
+
+        if(!$title = filter_var($_POST['title'], FILTER_SANITIZE_STRING)) {
+            $_SESSION['errors'] = ['Title is invalid.'];
+            $hasErrors = true;
+        }
+
+        if(!$excerpt = filter_var($_POST['excerpt'], FILTER_SANITIZE_STRING)) {
+            $_SESSION['errors'] = ['Summary is invalid.'];
+            $hasErrors = true;
+        }
+        if(!$content = $_POST['content']) {
+            $_SESSION['errors'] = ['Content is invalid.'];
+            $hasErrors = true;
+        }
+
+        if($hasErrors) {
+            header('Location:' . URL . '/admin/posts/create', true, 302);
+            exit;
+        }
+
+
         $slug = $this->createSlug($title);
 
         try {

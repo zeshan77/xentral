@@ -11,7 +11,7 @@
             </li>
         </ul>
         <ul class="navbar-nav">
-            @if($_SESSION['authenticated'])
+            @if(isset($_SESSION['authenticated']))
                 <li class="nav-item"><a href="/admin" class="nav-link">Go to Admin</a></li>
             @else
                 <li class="nav-item">

@@ -7,6 +7,8 @@
         <a href="/admin" class="btn btn-primary">Show all</a>
     </div>
 
+    @include('partials.alerts')
+
     <form class="pb-5 border p-5" action="/admin/posts/store" method="post">
         <div class="form-group mb-5">
             <label for="title">Title</label>
