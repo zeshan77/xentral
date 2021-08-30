@@ -17,7 +17,8 @@
                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
             </div>
 
-            <button class="btn btn-lg btn-primary btn-block mt-3" type="submit" name="signin" value="true">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block mt-3 mb-2" type="submit" name="signin" value="true">Sign in</button>
+            <a href="/register">Create account</a>
             <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
         </form>
     </div>

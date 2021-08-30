@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zeshankhattak\XentralExercise;
 
 use PDO;
@@ -14,10 +16,10 @@ class DBConnection
 
     public function __construct()
     {
-        /* Connect to a MySQL database using driver invocation */
-        $this->dsn = 'mysql:dbname=xentral;host=127.0.0.1';
-        $this->username = 'root';
-        $this->password = 'cu-W6ner';
+        $this->dsn = "mysql:dbname=".getenv('DB_NAME').";host=".getenv('DB_HOST');
+
+        $this->username = getenv('DB_USERNAME');
+        $this->password = getenv('DB_PASSWORD');
 
         $this->openConnection();
     }
@@ -25,10 +27,5 @@ class DBConnection
     public function openConnection()
     {
         $this->dbConnection = $this->dbConnection = new PDO($this->dsn, $this->username, $this->password);
-    }
-
-    public function closeConnection()
-    {
-
     }
 }

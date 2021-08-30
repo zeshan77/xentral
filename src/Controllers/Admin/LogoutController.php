@@ -1,7 +1,8 @@
 <?php
 
-namespace Zeshankhattak\XentralExercise\Controllers\Admin;
+declare(strict_types=1);
 
+namespace Zeshankhattak\XentralExercise\Controllers\Admin;
 
 use Zeshankhattak\XentralExercise\Traits\AuthTrait;
 

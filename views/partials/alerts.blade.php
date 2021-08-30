@@ -5,14 +5,12 @@
         @endforeach
     </div>
 @endif
-
 @if(isset($_SESSION['errors']))
     <div class="alert alert-danger text-left" role="alert">
         @foreach($_SESSION['errors'] as $error)
             <p class="m-0 p-0">{{ $error }}</p>
         @endforeach
     </div>
-
     @php $_SESSION['errors'] = null; @endphp
 @endif
 

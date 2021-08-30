@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zeshankhattak\XentralExercise\Controllers\Auth;
 
 use Zeshankhattak\XentralExercise\DBConnection;
@@ -11,17 +13,7 @@ class RegisterController extends BaseController
 {
     use AuthTrait;
 
-    public PDO $pdo;
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        $dbConnection = new DBConnection();
-        $this->pdo = $dbConnection->dbConnection;
-    }
-
-    public function showForm()
+    public function showForm(): string
     {
         return $this->blade->render('auth.register');
     }
@@ -40,7 +32,6 @@ class RegisterController extends BaseController
             $_SESSION['errors'] = ['Email already exists'];
 
             header('Location:'. URL . '/register', true, 302);
-            exit;
         }
 
         try {
@@ -54,6 +45,5 @@ class RegisterController extends BaseController
 
         $_SESSION['message'] = 'Account successfully created. Please login now.';
         header('Location:' . URL . '/login', true, 302);
-
     }
 }

@@ -25,7 +25,8 @@
             </div>
 
             <div class="row mt-3">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" value="true" name="register">Sign up</button>
+                <button class="btn btn-lg btn-primary btn-block mb-2" type="submit" value="true" name="register">Sign up</button>
+                Already have an account? <a href="/login">Login here</a>
                 <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
             </div>
         </form>

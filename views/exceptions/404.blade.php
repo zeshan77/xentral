@@ -2,6 +2,8 @@
 
 @section('content')
 
-    <h1>Page not found</h1>
+    <h1>Resource you are looking for could not be found</h1>
+
+    <a href="/">Go back to home page</a>
 
 @endsection

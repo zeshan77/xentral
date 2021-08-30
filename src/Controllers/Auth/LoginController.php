@@ -1,28 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zeshankhattak\XentralExercise\Controllers\Auth;
 
-use Zeshankhattak\XentralExercise\DBConnection;
+use Jenssegers\Blade\Blade;
 use Zeshankhattak\XentralExercise\Traits\AuthTrait;
 use Zeshankhattak\XentralExercise\Controllers\BaseController;
-use PDO;
 
 class LoginController extends BaseController
 {
     use AuthTrait;
 
-    public PDO $pdo;
-
-    public function __construct()
+    public function showForm(): string
     {
-        parent::__construct();
-
-        $dbConnection = new DBConnection();
-        $this->pdo = $dbConnection->dbConnection;
-    }
-
-    public function showForm()
-    {
+        $this->checkIfAuthenticated();
         return $this->blade->render('auth.login');
     }
 
@@ -32,18 +24,13 @@ class LoginController extends BaseController
             header('Location:' . URL . '/login', true, 302);
         }
 
-
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if(!$this->ifUserExists($email)) {
+        if(! $this->attempt($email, $password)) {
             $_SESSION['errors'] = ['Invalid login credentials.'];
             header('Location:' . URL . '/login', true, 302);
-        }
-
-        if(! $user = $this->attempt($email, $password)) {
-            $_SESSION['errors'] = ['Invalid login credentials.'];
-            header('Location:' . URL . '/login', true, 302);
+            exit;
         }
 
         header('Location:' . URL . '/admin', true, 302);
