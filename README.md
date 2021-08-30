@@ -33,3 +33,4 @@ Controller is then send back the response to `index.php` inorder to show it in t
 - Blade is used as templating engine
 - PDO is used for communicating with database
 - Composer is used for third party package management
+- Bootstrap is used ass css framework
