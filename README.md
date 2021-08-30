@@ -2,7 +2,6 @@
 
 ### Installation
 ```bash
-1. Clone
   git clone git@github.com:zeshan77/xentral.git ./{localdirectory}
   cd {localdirectory}
   composer install
